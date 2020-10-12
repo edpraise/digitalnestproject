@@ -3,6 +3,7 @@ import 'package:tv24africa/screens/live_tv.dart';
 import 'package:tv24africa/screens/main_drawe.dart';
 import 'package:tv24africa/screens/news.dart';
 import 'package:tv24africa/screens/podcast.dart';
+import 'package:tv24africa/screens/settinng.dart';
 import 'package:tv24africa/screens/videos.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFcc0000),
+          backgroundColor: Color(0xFFbd1017),
           title: Image.asset('assets/images/tony.png', fit: BoxFit.cover,height: 50,),
           actions: <Widget>[
             IconButton(
@@ -26,7 +27,11 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
               onPressed: () {
-                // do something
+                 Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          SettingsScreen()));
               },
             )
           ],

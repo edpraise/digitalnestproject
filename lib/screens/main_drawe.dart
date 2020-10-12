@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tv24africa/screens/nav_bar_items/about_us.dart';
 import 'package:tv24africa/screens/nav_bar_items/contact.dart';
 import 'package:tv24africa/screens/nav_bar_items/home.dart';
+import 'package:tv24africa/screens/nav_bar_items/tip.dart';
 import 'package:tv24africa/screens/nav_bar_items/weblive_tv.dart';
 import 'package:tv24africa/screens/nav_bar_items/webnewPaper.dart';
 
@@ -16,7 +17,7 @@ class MainDrawer extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: EdgeInsets.all(20),
-              color: Color(0xFFcc0000),
+              color: Color(0xFFbd1017),
               child: Center(
                 child: Column(
                   children: [
@@ -91,6 +92,26 @@ class MainDrawer extends StatelessWidget {
                       onPressed: () {}),
                   title: Text(
                     'News Paper Website',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                )),
+                 Container(
+                decoration: BoxDecoration(color: Color(0xFF333333)),
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Tip()));
+                  },
+                  leading: IconButton(
+                      color: Colors.white,
+                      icon: FaIcon(
+                        FontAwesomeIcons.envelopeOpenText,
+                      ),
+                      onPressed: () {}),
+                  title: Text(
+                    'Submit a Tip ',
                     style: TextStyle(
                       color: Colors.white,
                     ),

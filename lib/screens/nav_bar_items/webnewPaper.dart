@@ -1,40 +1,9 @@
-// import 'package:flutter/material.dart';
 
-// class NewsPaper extends StatefulWidget {
-//   @override
-//   _NewsPaperState createState() => _NewsPaperState();
-// }
-
-// class _NewsPaperState extends State<NewsPaper> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-      
-//     );
-//   }
-// }
-
-
-// import 'package:flutter/material.dart';
-
-// class LiveTv extends StatefulWidget {
-//   @override
-//   _LiveTvState createState() => _LiveTvState();
-// }
-
-// class _LiveTvState extends State<LiveTv> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-      
-//     );
-//   }
-// }
 
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:tv24africa/pages/home_pageTabed.dart';
+// import 'package:tv24africa/pages/home_pageTabed.dart';
 
 // import '../main.dart';
 
@@ -69,50 +38,50 @@ class _NewsPaperSite extends State<NewsPaperSite> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
          backgroundColor: Colors.white,
-        appBar: AppBar(
-           backgroundColor:Color(0xFFcc0000),
-          leading: new IconButton(
-              icon: new Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.pop(context, true);
-              }),
-          // backgroundColor: Colors.white,
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'NewsPaperSite',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ), // fontFamily: ,
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.home,
-                  color: Colors.white,
-                  size: 29,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                },
-              ),
-            )
-          ],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
-        body: Container(
+        // appBar: AppBar(
+        //    backgroundColor:Color(0xFFcc0000),
+        //   leading: new IconButton(
+        //       icon: new Icon(
+        //         Icons.arrow_back,
+        //         color: Colors.white,
+        //       ),
+        //       onPressed: () {
+        //         Navigator.pop(context, true);
+        //       }),
+        //   // backgroundColor: Colors.white,
+        //   title: Column(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: <Widget>[
+        //       Text(
+        //         'NewsPaperSite',
+        //         style: TextStyle(
+        //           color: Colors.white,
+        //           fontSize: 20,
+        //         ), // fontFamily: ,
+        //       ),
+        //     ],
+        //   ),
+        //   actions: <Widget>[
+        //     Padding(
+        //       padding: const EdgeInsets.all(8.0),
+        //       child: IconButton(
+        //         icon: Icon(
+        //           Icons.home,
+        //           color: Colors.white,
+        //           size: 29,
+        //         ),
+        //         onPressed: () {
+        //           Navigator.of(context).pop();
+        //           Navigator.push(context,
+        //               MaterialPageRoute(builder: (context) => HomePage()));
+        //         },
+        //       ),
+        //     )
+        //   ],
+        //   centerTitle: true,
+        //   elevation: 0.0,
+        // ),
+        body: SafeArea(
             child: Column(children: <Widget>[
           Container(
               padding: EdgeInsets.all(1.0),
@@ -125,7 +94,7 @@ class _NewsPaperSite extends State<NewsPaperSite> {
               decoration:
                   BoxDecoration(border: Border.all(color: Colors.white)),
               child: InAppWebView(
-                initialUrl: "https://tv24africa.com/watch-live/",
+                initialUrl: "https://news.tv24africa.com/",
                 initialHeaders: {},
                 initialOptions: InAppWebViewGroupOptions(
                     crossPlatform: InAppWebViewOptions(

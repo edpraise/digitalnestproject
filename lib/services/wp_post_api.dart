@@ -3,7 +3,7 @@ import 'dart:convert';
 
 Future<List> fetchWpPost() async {
   final response = await http.get(
-      'https://news.tv24africa.com/wp-json/wp/v2/posts/?per_page=70',
+      'https://news.tv24africa.com/wp-json/wp/v2/posts/?per_page=15',
       headers: {"Accept": "application/json"});
 
   var convertDatatoJson = jsonDecode(response.body);

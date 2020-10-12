@@ -19,39 +19,41 @@ class _AboutState extends State<About> {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
                 onTap: () {
-                Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>HomePage()));
-                }, child: Icon(Icons.home, color: Colors.white)),
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                child: Icon(Icons.home, color: Colors.white)),
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  child: Padding(
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Container(height: 150,),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset('assets/images/tony.png'),
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Image.asset('assets/images/tony.png'),
+                    child: Text(
+                      '\nTv24Africa  is the flagship company owned by News Media Africa set up to tell the African stories in ways never told and to give the African people the chance for their views, voices, \nideas and perspectives to be heard globally.\nContact us: News@tv24africa.com\n\n Version 1.10\n@2020',
+                      style: TextStyle(fontSize: 17, color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                SizedBox(height: 5),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    '\nTv24Africa  is the flagship company owned by News Media Africa set up to tell the African stories in ways never told and to give the African people the chance for their views, voices, \nideas and perspectives to be heard globally.\nContact us: News@tv24africa.com\n\n Version 1.10\n@2020',
-                    style: TextStyle(fontSize: 17, color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
