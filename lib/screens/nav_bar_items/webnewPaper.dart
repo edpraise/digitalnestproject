@@ -37,7 +37,7 @@ class _NewsPaperSite extends State<NewsPaperSite> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-         backgroundColor: Colors.white,
+         backgroundColor: Colors.black,
         // appBar: AppBar(
         //    backgroundColor:Color(0xFFcc0000),
         //   leading: new IconButton(

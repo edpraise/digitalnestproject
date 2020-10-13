@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tv24africa/models/channel_model.dart';
 import 'package:tv24africa/models/video_model.dart';
 import 'package:tv24africa/screens/playVideos.dart';
@@ -170,53 +170,57 @@ class _LiveVideoState extends State<LiveVideo> {
                           shrinkWrap: true,
                           itemCount: _channel.videos.length,
                           itemBuilder: (BuildContext context, int index) {
-                             if (index == _channel.videos.length ) {
+                             if (index == _channel.videos.length-0 ) {
                             return Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10.0),
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          IconButton(
-                                            icon: FaIcon(
-                                              FontAwesomeIcons.facebook,
-                                              color: Color(0xFFbd1017),
-                                            ),
-                                            onPressed: () {},
-                                          ),
-                                          IconButton(
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.twitter,
-                                                color: Color(0xFFbd1017),
-                                              ),
-                                              onPressed: () {}),
-                                          IconButton(
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.instagram,
-                                                color: Color(0xFFbd1017),
-                                              ),
-                                              onPressed: () {}),
-                                          IconButton(
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.youtube,
-                                                color: Color(0xFFbd1017),
-                                              ),
-                                              onPressed: () {}),
-                                          IconButton(
-                                              icon: FaIcon(
-                                                  FontAwesomeIcons.linkedinIn,
-                                                  color: Color(0xFFbd1017)),
-                                              onPressed: () {}),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                child: Center(
+                  child: Text("CopyRight @ Tv24Africa 2020",
+                      style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
+                )
+                              // child: Row(
+                              //   mainAxisAlignment: MainAxisAlignment.center,
+                              //   children: [
+                              //     Padding(
+                              //       padding: const EdgeInsets.only(left: 10.0),
+                              //       child: Center(
+                              //         child: Row(
+                              //           mainAxisAlignment: MainAxisAlignment.center,
+                              //           children: [
+                              //             IconButton(
+                              //               icon: FaIcon(
+                              //                 FontAwesomeIcons.facebook,
+                              //                 color: Color(0xFFbd1017),
+                              //               ),
+                              //               onPressed: () {},
+                              //             ),
+                              //             IconButton(
+                              //                 icon: FaIcon(
+                              //                   FontAwesomeIcons.twitter,
+                              //                   color: Color(0xFFbd1017),
+                              //                 ),
+                              //                 onPressed: () {}),
+                              //             IconButton(
+                              //                 icon: FaIcon(
+                              //                   FontAwesomeIcons.instagram,
+                              //                   color: Color(0xFFbd1017),
+                              //                 ),
+                              //                 onPressed: () {}),
+                              //             IconButton(
+                              //                 icon: FaIcon(
+                              //                   FontAwesomeIcons.youtube,
+                              //                   color: Color(0xFFbd1017),
+                              //                 ),
+                              //                 onPressed: () {}),
+                              //             IconButton(
+                              //                 icon: FaIcon(
+                              //                     FontAwesomeIcons.linkedinIn,
+                              //                     color: Color(0xFFbd1017)),
+                              //                 onPressed: () {}),
+                              //           ],
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
                             );
                           }
                             
@@ -264,10 +268,10 @@ class _LiveVideoState extends State<LiveVideo> {
                 //         })
                 //   ],
                 // ),
-                Center(
-                  child: Text("CopyRight @ Tv24Africa 2020",
-                      style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
-                )
+                // Center(
+                //   child: Text("CopyRight @ Tv24Africa 2020",
+                //       style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
+                // )
               ],
             ),
           ),

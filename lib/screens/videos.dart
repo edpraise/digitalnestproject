@@ -119,9 +119,9 @@ class _VideosState extends State<Videos> {
                     bottom: 5,
                     child: Container(
                       height: 60,
-                      width: 150,
+                      width: 60,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(60),
                           color: Colors.black87),
 
                       child: IconButton(
@@ -169,49 +169,57 @@ class _VideosState extends State<Videos> {
                            if (index == _channel.videos.length - 1) {
                             return Container(
                              
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                              child: Column(
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10.0),
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          IconButton(
-                                            icon: FaIcon(
-                                              FontAwesomeIcons.facebook,
-                                              color: Color(0xFFbd1017),
-                                            ),
-                                            onPressed: () {},
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10.0),
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              IconButton(
+                                                icon: FaIcon(
+                                                  FontAwesomeIcons.facebook,
+                                                  color: Color(0xFFbd1017),
+                                                ),
+                                                onPressed: () {},
+                                              ),
+                                              IconButton(
+                                                  icon: FaIcon(
+                                                    FontAwesomeIcons.twitter,
+                                                    color: Color(0xFFbd1017),
+                                                  ),
+                                                  onPressed: () {}),
+                                              IconButton(
+                                                  icon: FaIcon(
+                                                    FontAwesomeIcons.instagram,
+                                                    color: Color(0xFFbd1017),
+                                                  ),
+                                                  onPressed: () {}),
+                                              IconButton(
+                                                  icon: FaIcon(
+                                                    FontAwesomeIcons.youtube,
+                                                    color: Color(0xFFbd1017),
+                                                  ),
+                                                  onPressed: () {}),
+                                              IconButton(
+                                                  icon: FaIcon(
+                                                      FontAwesomeIcons.linkedinIn,
+                                                      color: Color(0xFFbd1017)),
+                                                  onPressed: () {}),
+                                            ],
                                           ),
-                                          IconButton(
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.twitter,
-                                                color: Color(0xFFbd1017),
-                                              ),
-                                              onPressed: () {}),
-                                          IconButton(
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.instagram,
-                                                color: Color(0xFFbd1017),
-                                              ),
-                                              onPressed: () {}),
-                                          IconButton(
-                                              icon: FaIcon(
-                                                FontAwesomeIcons.youtube,
-                                                color: Color(0xFFbd1017),
-                                              ),
-                                              onPressed: () {}),
-                                          IconButton(
-                                              icon: FaIcon(
-                                                  FontAwesomeIcons.linkedinIn,
-                                                  color: Color(0xFFbd1017)),
-                                              onPressed: () {}),
-                                        ],
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
+                                    Center(
+                  child: Text("CopyRight @ Tv24Africa 2020",
+                      style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
+                )
                                 ],
                               ),
                             );
@@ -225,10 +233,10 @@ class _VideosState extends State<Videos> {
                   : Center(
                       child: CircularProgressIndicator(),
                     ),
-                     Center(
-                  child: Text("CopyRight @ Tv24Africa 2020",
-                      style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
-                )
+                //      Center(
+                //   child: Text("CopyRight @ Tv24Africa 2020",
+                //       style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
+                // )
             ],
           ),
        

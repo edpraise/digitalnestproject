@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tv24africa/pages/home_pageTabed.dart';
+// import 'package:tv24africa/screens/live_tv.dart';
 import 'package:tv24africa/screens/nav_bar_items/about_us.dart';
 import 'package:tv24africa/screens/nav_bar_items/contact.dart';
-import 'package:tv24africa/screens/nav_bar_items/home.dart';
+// import 'package:tv24africa/screens/nav_bar_items/home.dart';
 import 'package:tv24africa/screens/nav_bar_items/tip.dart';
 import 'package:tv24africa/screens/nav_bar_items/weblive_tv.dart';
 import 'package:tv24africa/screens/nav_bar_items/webnewPaper.dart';
@@ -42,7 +44,7 @@ class MainDrawer extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomeForDrawer()));
+                            builder: (context) => HomePage()));
                   },
                   leading: IconButton(
                       color: Colors.white,

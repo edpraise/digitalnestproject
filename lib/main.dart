@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:tv24africa/pages/home_pageTabed.dart';
 import 'package:tv24africa/screens/landing_page.dart';
+// import 'package:tv24africa/screens/podcast%20Section/podcastlist.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home:SplashScreen(),
+      // home: PodcastList(),
     );
   }
 }

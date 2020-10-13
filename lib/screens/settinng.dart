@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:tv24africa/widgets/customD_about.dart';
 // // import 'package:tv24africa/widgets/custom_notLang.dart';
 
@@ -55,7 +56,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     child: Icon(Icons.view_stream, color: Colors.white),
                   ),
-                  trailing: Icon(Icons.arrow_forward_ios),
+                  trailing: GestureDetector(
+                      onTap: () {
+                        // StreamSlider();
+                      },
+                      child: Icon(Icons.arrow_forward_ios)),
                 )),
                 Divider(),
                 Container(
@@ -129,7 +134,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Container(
                     child: ListTile(
                   title: Text('Terms of use'),
-                  trailing: Icon(Icons.arrow_forward_ios),
+                  trailing: GestureDetector(
+                      onTap: () {
+                        _launchURL();
+                      },
+                      child: Icon(Icons.arrow_forward_ios)),
                   leading: Container(
                     height: 60,
                     width: 70,
@@ -171,10 +180,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: ListTile(
                   title: Text('Share this app'),
                   trailing: GestureDetector(
-                    onTap: (){
-                      share(link, 'text' );
-                    },
-                    child: Icon(Icons.arrow_forward_ios, )),
+                      onTap: () {
+                        share(link, 'text');
+                      },
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                      )),
                   leading: Container(
                       height: 60,
                       width: 70,
@@ -210,4 +221,41 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+
+  _launchURL() async {
+    const url = 'https://tv24africa.com/terms-of-use/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 }
+
+// class StreamSlider extends StatefulWidget {
+//   @override
+//   _StreamSliderState createState() => _StreamSliderState();
+// }
+
+// class _StreamSliderState extends State<StreamSlider> {
+//   double lvalue = 0;
+//   double uvalue = 0;
+//   RangeValues values = RangeValues(0, 100);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       child: RangeSlider(
+//           divisions: 10,
+//           labels: RangeLabels(values.start.toString(), values.end.toString()),
+//           min: lvalue,
+//           max: uvalue,
+//           values: values,
+//           onChanged: (value) {
+//             setState(() {
+//               value = values;
+//             });
+//           }),
+//     );
+//   }
+// }
