@@ -175,52 +175,7 @@ class _LiveVideoState extends State<LiveVideo> {
                                 child: Center(
                   child: Text("CopyRight @ Tv24Africa 2020",
                       style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
-                )
-                              // child: Row(
-                              //   mainAxisAlignment: MainAxisAlignment.center,
-                              //   children: [
-                              //     Padding(
-                              //       padding: const EdgeInsets.only(left: 10.0),
-                              //       child: Center(
-                              //         child: Row(
-                              //           mainAxisAlignment: MainAxisAlignment.center,
-                              //           children: [
-                              //             IconButton(
-                              //               icon: FaIcon(
-                              //                 FontAwesomeIcons.facebook,
-                              //                 color: Color(0xFFbd1017),
-                              //               ),
-                              //               onPressed: () {},
-                              //             ),
-                              //             IconButton(
-                              //                 icon: FaIcon(
-                              //                   FontAwesomeIcons.twitter,
-                              //                   color: Color(0xFFbd1017),
-                              //                 ),
-                              //                 onPressed: () {}),
-                              //             IconButton(
-                              //                 icon: FaIcon(
-                              //                   FontAwesomeIcons.instagram,
-                              //                   color: Color(0xFFbd1017),
-                              //                 ),
-                              //                 onPressed: () {}),
-                              //             IconButton(
-                              //                 icon: FaIcon(
-                              //                   FontAwesomeIcons.youtube,
-                              //                   color: Color(0xFFbd1017),
-                              //                 ),
-                              //                 onPressed: () {}),
-                              //             IconButton(
-                              //                 icon: FaIcon(
-                              //                     FontAwesomeIcons.linkedinIn,
-                              //                     color: Color(0xFFbd1017)),
-                              //                 onPressed: () {}),
-                              //           ],
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
+                ),
                             );
                           }
                             
@@ -230,48 +185,11 @@ class _LiveVideoState extends State<LiveVideo> {
                         ),
                       )
                     : Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.redAccent[700],
+                        ),
                       ),
-                // Text("We Are Social",
-                //     style: TextStyle(color: Colors.white, fontSize: 20)),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     IconButton(
-                //         icon: FaIcon(FontAwesomeIcons.facebook,
-                //             color: Color(0xFFbd1017)),
-                //         onPressed: () {
-                //           print("Pressed");
-                //         }),
-                //     IconButton(
-                //         icon: FaIcon(FontAwesomeIcons.twitter,
-                //             color: Color(0xFFbd1017)),
-                //         onPressed: () {
-                //           print("Pressed");
-                //         }),
-                //     IconButton(
-                //         icon: FaIcon(FontAwesomeIcons.youtube,
-                //             color: Color(0xFFbd1017)),
-                //         onPressed: () {}),
-                //     IconButton(
-                //         icon: FaIcon(FontAwesomeIcons.instagram,
-                //             color: Color(0xFFbd1017)),
-                //         onPressed: () {
-                //           print("Pressed");
-                //         }),
-                //     IconButton(
-                //         icon: FaIcon(FontAwesomeIcons.linkedinIn,
-                //             color: Color(0xFFbd1017)),
-                //         onPressed: () {
-                //           print("Pressed");
-                //         })
-                //   ],
-                // ),
-                // Center(
-                //   child: Text("CopyRight @ Tv24Africa 2020",
-                //       style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
-                // )
+                
               ],
             ),
           ),

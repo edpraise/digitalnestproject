@@ -231,7 +231,9 @@ class _VideosState extends State<Videos> {
                       ),
                     )
                   : Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.redAccent[700],
+                      ),
                     ),
                 //      Center(
                 //   child: Text("CopyRight @ Tv24Africa 2020",
