@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:tv24africa/PodcastPages/podcast_now_template.dart';
 import 'package:tv24africa/models/radio.dart';
 import 'package:tv24africa/services/player_provider.dart';
-import 'package:tv24africa/utilities/hex_color.dart';
+// import 'package:tv24africa/utilities/hex_color.dart';
 
 import 'now_playing_podcast.dart';
 
@@ -36,17 +36,6 @@ class _RadioPageState extends State<RadioPage> {
     _searchQuery.addListener(_onSearchChanged);    
   }
 
-  
-  // void _initAudioPlayer() {
-  //   var audioPlayerBloc = Provider.of<PlayerProvider>(context, listen: false);
-
-  //   if (audioPlayerBloc.getPlayerState() == RadioPlayerState.STOPPED) {
-  //     _audioPlayer = new AudioPlayer();
-  //   } else {
-  //     _audioPlayer =
-  //         Provider.of<PlayerProvider>(context, listen: false).getAudioPlayer();
-  //   }
-  // }
 
   _onSearchChanged() {
     var radiosBloc = Provider.of<PlayerProvider>(context, listen: false);
@@ -76,54 +65,6 @@ class _RadioPageState extends State<RadioPage> {
     );
   }
 
-  // Widget _appLogo() {
-  //   return Container(
-  //     width: double.infinity,
-  //     color: HexColor("#182545"),
-  //     height: 200,
-  //     child: Padding(
-  //       padding: EdgeInsets.all(10),
-  //       child: Center(
-  //         child: new Text(
-  //           "Radio App",
-  //           style: TextStyle(
-  //             fontSize: 30,
-  //             color: HexColor("#FF0000"),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget _searchBar() {
-  //   return Container(
-  //     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-  //     margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-  //     decoration: BoxDecoration(
-  //       color: Colors.white,
-  //       borderRadius: BorderRadius.circular(10),
-  //     ),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //       children: [
-  //         Icon(Icons.search),
-  //         new Flexible(
-  //           child: new TextField(
-  //             cursorColor: Colors.black,
-  //             decoration: InputDecoration(
-  //               border: InputBorder.none,
-  //               contentPadding: EdgeInsets.all(5),
-  //               hintText: 'Search Radio',
-  //             ),
-  //             controller: _searchQuery,
-  //           ),
-  //         ),
-  //         Spacer(),
-  //       ],
-  //     ),
-  //   );
-  // }
 
   Widget _noData() {
     String noDataTxt = "";

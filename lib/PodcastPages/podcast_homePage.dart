@@ -34,8 +34,8 @@ class _PodCastHomePageState extends State<PodCastHomePage> {
           showUnselectedLabels: false,
           currentIndex: _currentIndex,
           items: [
-            _bottomNavItem(Icons.play_arrow, "Listen"),
-            _bottomNavItem(Icons.favorite, "Favorite")
+            _bottomNavItem(Icons.play_arrow, "Current List"),
+            _bottomNavItem(Icons.favorite, "Favorites")
           ],
           onTap: onTabTapped,
         ),

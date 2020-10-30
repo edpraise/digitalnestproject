@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
+// import 'package:tv24africa/screens/rating_screens.dart';
+// import 'package:tv24africa/widgets/ratingdialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:tv24africa/widgets/customD_about.dart';
 // // import 'package:tv24africa/widgets/custom_notLang.dart';
@@ -157,7 +159,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Container(
                     child: ListTile(
                   title: Text('Rate this App'),
-                  trailing: Icon(Icons.arrow_forward_ios),
+                  trailing: GestureDetector(
+                    onTap: () {
+                      
+                    },
+                    child: Icon(Icons.arrow_forward_ios),
+                  ),
                   leading: Container(
                     height: 60,
                     width: 70,

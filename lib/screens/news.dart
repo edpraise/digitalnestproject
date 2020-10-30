@@ -35,32 +35,40 @@ class _NewsState extends State<News> {
                                     builder: (context) => FeedDetails(wppost)));
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            padding: const EdgeInsets.all(4.0),
+                            child: Stack(
+                              // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // Image.network(imageUrl),
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(4),
                                   child: FadeInImage.assetNetwork(
                                     placeholder: 'assets/images/load.gif',
                                     width: MediaQuery.of(context).size.width,
                                     height:
-                                        MediaQuery.of(context).size.height / 5,
+                                        MediaQuery.of(context).size.height / 3,
                                     image: imageUrl,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                                 // Expanded(child: Container()),
 
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    wppost['title']['rendered'],
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15.5,
-                                        fontWeight: FontWeight.bold),
+                                Container(
+                                  alignment: Alignment.bottomCenter,
+                                  // height: 100,
+                                  // width: MediaQuery.of(context).size.width,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      
+                                      wppost['title']['rendered'],
+                                      softWrap: true,
+                                      maxLines: 2,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 25.5,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -84,19 +92,22 @@ class _NewsState extends State<News> {
                         itemBuilder: (BuildContext context, int index) {
                           if (index == snapshot.data.length - 1) {
                             return Container(
-                             
                               child: Column(
                                 children: [
-                                   Text("We Are Social",
-                    style: TextStyle(color: Color(0xFFbd1017), fontSize: 13)),
+                                  Text("We Are Social",
+                                      style: TextStyle(
+                                          color: Color(0xFFbd1017),
+                                          fontSize: 13)),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.only(left: 10.0),
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
                                         child: Center(
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               IconButton(
                                                 icon: FaIcon(
@@ -125,20 +136,22 @@ class _NewsState extends State<News> {
                                                   onPressed: () {}),
                                               IconButton(
                                                   icon: FaIcon(
-                                                      FontAwesomeIcons.linkedinIn,
+                                                      FontAwesomeIcons
+                                                          .linkedinIn,
                                                       color: Color(0xFFbd1017)),
                                                   onPressed: () {}),
                                             ],
                                           ),
                                         ),
                                       ),
-                                     
                                     ],
                                   ),
-                                 Center(
-                  child: Text("CopyRight @ Tv24Africa 2020",
-                      style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
-                )
+                                  Center(
+                                    child: Text("CopyRight @ Tv24Africa 2020",
+                                        style: TextStyle(
+                                            color: Color(0xFFbd1017),
+                                            fontSize: 15)),
+                                  )
                                 ],
                               ),
                             );
