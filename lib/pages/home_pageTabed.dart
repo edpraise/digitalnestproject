@@ -35,18 +35,20 @@ class _HomePageState extends State<HomePage> {
               },
             )
           ],
-          bottom: TabBar(tabs: <Widget>[
+          bottom: TabBar(
+            indicatorColor: Colors.black,
+            tabs: <Widget>[
             Tab(
-              text: "Live Tv",
+              text: "Live TV",
             ),
             Tab(
               text: "News",
             ),
             Tab(
-              text: "Video",
+              text: "Videos",
             ),
             Tab(
-              text: "Podcast",
+              text: "Podcasts",
             ),
           ]),
           centerTitle: true,

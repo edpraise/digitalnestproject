@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 // import 'package:tv24africa/screens/rating_screens.dart';
@@ -61,6 +62,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   trailing: GestureDetector(
                       onTap: () {
                         // StreamSlider();
+                        _streamQuality();
                       },
                       child: Icon(Icons.arrow_forward_ios)),
                 )),
@@ -160,9 +162,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: ListTile(
                   title: Text('Rate this App'),
                   trailing: GestureDetector(
-                    onTap: () {
-                      
-                    },
+                    onTap: () {},
                     child: Icon(Icons.arrow_forward_ios),
                   ),
                   leading: Container(
@@ -237,32 +237,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
       throw 'Could not launch $url';
     }
   }
+
+  _streamQuality() {
+    showDialog(
+        context: context,
+        builder: (_) => new CupertinoAlertDialog(
+              title: new Text("Stream Quality"),
+              content: new Text(
+                  "The stream Quality will be set in accordance to your current internet bandwith"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Close me!'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ));
+  }
 }
-
-// class StreamSlider extends StatefulWidget {
-//   @override
-//   _StreamSliderState createState() => _StreamSliderState();
-// }
-
-// class _StreamSliderState extends State<StreamSlider> {
-//   double lvalue = 0;
-//   double uvalue = 0;
-//   RangeValues values = RangeValues(0, 100);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: RangeSlider(
-//           divisions: 10,
-//           labels: RangeLabels(values.start.toString(), values.end.toString()),
-//           min: lvalue,
-//           max: uvalue,
-//           values: values,
-//           onChanged: (value) {
-//             setState(() {
-//               value = values;
-//             });
-//           }),
-//     );
-//   }
-// }

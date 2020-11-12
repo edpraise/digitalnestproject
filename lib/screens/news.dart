@@ -16,7 +16,13 @@ class _NewsState extends State<News> {
     return Scaffold(
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Padding(
+            //   padding: const EdgeInsets.only(left:15.0, top: 15),
+            //   child: Text('Latest',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+            // ),
             Container(
               height: MediaQuery.of(context).size.height / 3,
               child: FutureBuilder(
@@ -80,6 +86,10 @@ class _NewsState extends State<News> {
                     return Center(child: Container());
                   }),
             ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left:15.0, top: 10),
+            //   child: Text('Others',style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+            // ),
             Expanded(
               child: FutureBuilder(
                   future: fetchWpPost(),
