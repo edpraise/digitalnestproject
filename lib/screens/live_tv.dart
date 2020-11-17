@@ -4,6 +4,7 @@ import 'package:tv24africa/models/channel_model.dart';
 import 'package:tv24africa/models/video_model.dart';
 import 'package:tv24africa/screens/playVideos.dart';
 import 'package:tv24africa/services/youTube_api.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class LiveVideo extends StatefulWidget {
@@ -12,6 +13,7 @@ class LiveVideo extends StatefulWidget {
 }
 
 class _LiveVideoState extends State<LiveVideo> {
+  final String phoneNumber1 = "08139027050";
   String url = 'https://youtu.be/oiK02WjJ1VQ';
   YoutubePlayerController _controller;
 
@@ -129,25 +131,54 @@ class _LiveVideoState extends State<LiveVideo> {
                 //               ),
                 //       ),
 
-                Container(
-                  decoration: BoxDecoration(
-                    // shape: 
+                Stack(
+                        children: [
+                                     Container(
+                    decoration: BoxDecoration(
+                      // shape: 
+                    ),
+                    child: YoutubePlayer(
+                      controller: _controller,
+                    ),
                   ),
-                  child: YoutubePlayer(
-                    controller: _controller,
-                  ),
+                  Positioned(
+                    right: 10,
+                    bottom: 5,
+                    child: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(60),
+                          color: Colors.black87),
+
+                      child: IconButton(
+                        color: Colors.white,
+                        icon: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Icon(
+                            Icons.call,
+                            color:Colors.white,
+                            size: 35,
+                          ),
+                        ),
+                        onPressed: () {
+                          callnow();
+                        },
+                      ),
+                      //  child: Icon(Icons.call, color: Colors.white, size: 40,),
+                    ),
+                  )
+                        ],
                 ),
                 SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Row(
                     children: [
-                      Text("All ",
+                      Text("Latest Videos ",
                           style:
                               TextStyle(color: Color(0xFFbd1017), fontSize: 20)),
-                      Text("Videos",
-                          style:
-                              TextStyle(color: Color(0xFFbd1017), fontSize: 20)),
+                      
                     ],
                   ),
                 ),
@@ -196,5 +227,9 @@ class _LiveVideoState extends State<LiveVideo> {
         ),
       ),
     );
+  }
+  callnow() {
+    String phoneNumber = "tel:" + phoneNumber1;
+    launch(phoneNumber);
   }
 }

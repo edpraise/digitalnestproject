@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tv24africa/services/wo_rest_api_singledata.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../services/wp_post_api.dart';
 
 import 'new_details_screen.dart';
@@ -11,6 +12,56 @@ class News extends StatefulWidget {
 }
 
 class _NewsState extends State<News> {
+  Future<void> _launchFacebook(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+  Future<void> _launchtweeter(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+  Future<void> _launchInstagram(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+  Future<void> _launchYouTube(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+  Future<void> _launchLinkedIn(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +117,6 @@ class _NewsState extends State<News> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(10.0),
                                     child: Text(
-                                      
                                       wppost['title']['rendered'],
                                       softWrap: true,
                                       maxLines: 2,
@@ -124,32 +174,47 @@ class _NewsState extends State<News> {
                                                   FontAwesomeIcons.facebook,
                                                   color: Color(0xFFbd1017),
                                                 ),
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  _launchFacebook(
+                                                      'https://web.facebook.com/TV24Africa?_rdc=1&_rdr');
+                                                },
                                               ),
                                               IconButton(
                                                   icon: FaIcon(
                                                     FontAwesomeIcons.twitter,
                                                     color: Color(0xFFbd1017),
                                                   ),
-                                                  onPressed: () {}),
+                                                  onPressed: () {
+                                                    _launchtweeter(
+                                                        'https://twitter.com/TV24Africa');
+                                                  }),
                                               IconButton(
                                                   icon: FaIcon(
                                                     FontAwesomeIcons.instagram,
                                                     color: Color(0xFFbd1017),
                                                   ),
-                                                  onPressed: () {}),
+                                                  onPressed: () {
+                                                    _launchInstagram(
+                                                        'https://www.instagram.com/tv24africa/');
+                                                  }),
                                               IconButton(
                                                   icon: FaIcon(
                                                     FontAwesomeIcons.youtube,
                                                     color: Color(0xFFbd1017),
                                                   ),
-                                                  onPressed: () {}),
+                                                  onPressed: () {
+                                                    _launchYouTube(
+                                                        'https://www.youtube.com/channel/UCuBry0S8HC_vRVJHzKA7dyg');
+                                                  }),
                                               IconButton(
                                                   icon: FaIcon(
                                                       FontAwesomeIcons
                                                           .linkedinIn,
                                                       color: Color(0xFFbd1017)),
-                                                  onPressed: () {}),
+                                                  onPressed: () {
+                                                    _launchLinkedIn(
+                                                        'https://www.linkedin.com/company/unavailable/');
+                                                  }),
                                             ],
                                           ),
                                         ),

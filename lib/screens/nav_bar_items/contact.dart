@@ -493,7 +493,8 @@ class _ContactUsState extends State<ContactUs> {
                   ),
                 )))
           ])),
-        ));
+        )
+        );
   }
 
   _showCupertinoDialog() {

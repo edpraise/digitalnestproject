@@ -5,6 +5,7 @@ import 'package:tv24africa/models/video_model.dart';
 import 'package:tv24africa/screens/playVideos.dart';
 import 'package:tv24africa/services/youtube_api.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Videos extends StatefulWidget {
   @override
@@ -12,12 +13,17 @@ class Videos extends StatefulWidget {
 }
 
 class _VideosState extends State<Videos> {
+   String url = 'https://youtu.be/dCGnHwlMsu0';
+  YoutubePlayerController _controller;
   final String phoneNumber1 = "08139027050";
   Channel _channel;
   bool _isLoading = false;
 
   @override
   void initState() {
+     _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(url),
+    );
     super.initState();
     _initChannel();
   }
@@ -108,39 +114,37 @@ class _VideosState extends State<Videos> {
                     decoration: BoxDecoration(
                       color: Color(0xFFbd1017),
                     ),
-                    child: Image.asset(
-                      'assets/images/td.gif',
-                      // height: 200,
-                      fit: BoxFit.scaleDown,
+                    child: YoutubePlayer(
+                      controller: _controller,
                     ),
                   ),
-                  Positioned(
-                    right: 10,
-                    bottom: 5,
-                    child: Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(60),
-                          color: Colors.black87),
+                  // Positioned(
+                  //   right: 10,
+                  //   bottom: 5,
+                  //   child: Container(
+                  //     height: 60,
+                  //     width: 60,
+                  //     decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(60),
+                  //         color: Colors.black87),
 
-                      child: IconButton(
-                        color: Colors.white,
-                        icon: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Icon(
-                            Icons.call,
-                            color: Color(0xFFcc0000),
-                            size: 35,
-                          ),
-                        ),
-                        onPressed: () {
-                          callnow();
-                        },
-                      ),
-                      //  child: Icon(Icons.call, color: Colors.white, size: 40,),
-                    ),
-                  )
+                  //     child: IconButton(
+                  //       color: Colors.white,
+                  //       icon: Padding(
+                  //         padding: const EdgeInsets.all(4.0),
+                  //         child: Icon(
+                  //           Icons.call,
+                  //           color: Color(0xFFcc0000),
+                  //           size: 35,
+                  //         ),
+                  //       ),
+                  //       onPressed: () {
+                  //         callnow();
+                  //       },
+                  //     ),
+                  //     //  child: Icon(Icons.call, color: Colors.white, size: 40,),
+                  //   ),
+                  // )
                 ],
               )),
           SizedBox(height: 2),

@@ -33,7 +33,7 @@ class _AboutState extends State<About> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Container(height: 150,),
+                  Container(height: 100,),
                   Container(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -43,10 +43,15 @@ class _AboutState extends State<About> {
                   SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      '\nTv24Africa  is the flagship company owned by News Media Africa set up to tell the African stories in ways never told and to give the African people the chance for their views, voices, \nideas and perspectives to be heard globally.\nContact us: News@tv24africa.com\n\n Version 1.10\n@2020',
-                      style: TextStyle(fontSize: 17, color: Colors.white),
-                      textAlign: TextAlign.center,
+                    child: Container(
+                      child: Text(
+                        ''''
+TV24 Africa is Africa’s first truly News, Features and Factual Stories Live TV and VOD platform, delivering world class text, video and audio contents on the web, social media and mobile - available anywhere, anytime.
+''''',
+                        
+                        style: TextStyle(fontSize: 17, color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ],

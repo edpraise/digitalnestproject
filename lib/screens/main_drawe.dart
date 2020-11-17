@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tv24africa/pages/home_pageTabed.dart';
+import 'package:tv24africa/screens/i_report.dart';
 // import 'package:tv24africa/screens/live_tv.dart';
 import 'package:tv24africa/screens/nav_bar_items/about_us.dart';
 import 'package:tv24africa/screens/nav_bar_items/contact.dart';
@@ -8,6 +9,7 @@ import 'package:tv24africa/screens/nav_bar_items/contact.dart';
 import 'package:tv24africa/screens/nav_bar_items/tip.dart';
 import 'package:tv24africa/screens/nav_bar_items/weblive_tv.dart';
 import 'package:tv24africa/screens/nav_bar_items/webnewPaper.dart';
+import 'package:tv24africa/screens/programs.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -73,7 +75,7 @@ class MainDrawer extends StatelessWidget {
                       ),
                       onPressed: () {}),
                   title: Text(
-                    'Live Tv website ',
+                    'Live TV website ',
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -93,13 +95,33 @@ class MainDrawer extends StatelessWidget {
                       ),
                       onPressed: () {}),
                   title: Text(
-                    'News Paper Website',
+                    'Newspaper Website',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 )),
                  Container(
+                decoration: BoxDecoration(color: Color(0xFF333333)),
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => IReport()));
+                  },
+                  leading: IconButton(
+                      color: Colors.white,
+                      icon: FaIcon(
+                        FontAwesomeIcons.envelopeOpenText,
+                      ),
+                      onPressed: () {}),
+                  title: Text(
+                    'i-Report ',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                )),
+                Container(
                 decoration: BoxDecoration(color: Color(0xFF333333)),
                 child: ListTile(
                   onTap: () {
@@ -113,7 +135,27 @@ class MainDrawer extends StatelessWidget {
                       ),
                       onPressed: () {}),
                   title: Text(
-                    'Submit a Tip ',
+                    'Submit a Pitch ',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                )),
+                   Container(
+                decoration: BoxDecoration(color: Color(0xFF333333)),
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Programs()));
+                  },
+                  leading: IconButton(
+                      color: Colors.white,
+                      icon: FaIcon(
+                        FontAwesomeIcons.envelopeOpenText,
+                      ),
+                      onPressed: () {}),
+                  title: Text(
+                    'Programs ',
                     style: TextStyle(
                       color: Colors.white,
                     ),

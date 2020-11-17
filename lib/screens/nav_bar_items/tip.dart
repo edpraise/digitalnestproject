@@ -65,7 +65,8 @@ class _TipState extends State<Tip> {
                   },
                 );
               }),
-        ));
+        )
+        );
   }
 }
 
