@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:tv24africa/screens/termsofuse.dart';
+import 'package:tv24africa/widgets/ratingdialog.dart';
 // import 'package:tv24africa/screens/rating_screens.dart';
 // import 'package:tv24africa/widgets/ratingdialog.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 // import 'package:tv24africa/widgets/customD_about.dart';
 // // import 'package:tv24africa/widgets/custom_notLang.dart';
 
@@ -140,7 +142,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: Text('Terms of use'),
                   trailing: GestureDetector(
                       onTap: () {
-                        _launchURL();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TermsOfUse()));
                       },
                       child: Icon(Icons.arrow_forward_ios)),
                   leading: Container(
@@ -162,7 +167,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: ListTile(
                   title: Text('Rate this App'),
                   trailing: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RatingsModule()));
+                    },
                     child: Icon(Icons.arrow_forward_ios),
                   ),
                   leading: Container(
@@ -229,14 +239,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  _launchURL() async {
-    const url = 'https://tv24africa.com/terms-of-use/';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+  // _launchURL() async {
+  //   const url = 'https://tv24africa.com/terms-of-use/';
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   _streamQuality() {
     showDialog(

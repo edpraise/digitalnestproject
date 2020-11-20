@@ -13,6 +13,59 @@ class Videos extends StatefulWidget {
 }
 
 class _VideosState extends State<Videos> {
+
+
+  Future<void> _launchFacebook(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+  Future<void> _launchtweeter(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+  Future<void> _launchInstagram(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+  Future<void> _launchYouTube(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+  Future<void> _launchLinkedIn(String url) async {
+    if (await canLaunch(url)) {
+      final bool nativeAppLaunchSucceded =
+          await launch(url, forceSafariVC: false, universalLinksOnly: true);
+      if (!nativeAppLaunchSucceded) {
+        await launch(url, forceSafariVC: true);
+      }
+    }
+  }
+
+
    String url = 'https://youtu.be/dCGnHwlMsu0';
   YoutubePlayerController _controller;
   final String phoneNumber1 = "08139027050";
@@ -189,31 +242,46 @@ class _VideosState extends State<Videos> {
                                                   FontAwesomeIcons.facebook,
                                                   color: Color(0xFFbd1017),
                                                 ),
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                   _launchFacebook(
+                                                      'https://web.facebook.com/TV24Africa?_rdc=1&_rdr');
+                                                },
                                               ),
                                               IconButton(
                                                   icon: FaIcon(
                                                     FontAwesomeIcons.twitter,
                                                     color: Color(0xFFbd1017),
                                                   ),
-                                                  onPressed: () {}),
+                                                  onPressed: () {
+                                                    _launchtweeter(
+                                                        'https://twitter.com/TV24Africa');
+                                                  }),
                                               IconButton(
                                                   icon: FaIcon(
                                                     FontAwesomeIcons.instagram,
                                                     color: Color(0xFFbd1017),
                                                   ),
-                                                  onPressed: () {}),
+                                                  onPressed: () {
+                                                    _launchInstagram(
+                                                        'https://www.instagram.com/tv24africa/');
+                                                  }),
                                               IconButton(
                                                   icon: FaIcon(
                                                     FontAwesomeIcons.youtube,
                                                     color: Color(0xFFbd1017),
                                                   ),
-                                                  onPressed: () {}),
+                                                  onPressed: () {
+                                                     _launchYouTube(
+                                                        'https://www.youtube.com/channel/UCuBry0S8HC_vRVJHzKA7dyg');
+                                                  }),
                                               IconButton(
                                                   icon: FaIcon(
                                                       FontAwesomeIcons.linkedinIn,
                                                       color: Color(0xFFbd1017)),
-                                                  onPressed: () {}),
+                                                  onPressed: () {
+                                                      _launchLinkedIn(
+                                                        'https://www.linkedin.com/company/unavailable/');
+                                                  }),
                                             ],
                                           ),
                                         ),
