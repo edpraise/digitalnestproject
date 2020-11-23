@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tv24africa/PodcastPages/podcast_homePage.dart';
+// import 'package:tv24africa/PodcastPages/podcast_homePage.dart';
+import 'package:tv24africa/audioSection/audiocastHomePage.dart';
 import 'package:tv24africa/screens/live_tv.dart';
 import 'package:tv24africa/screens/main_drawe.dart';
 import 'package:tv24africa/screens/news.dart';  
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage> {
         ),
 
         drawer: MainDrawer(),
-        body: TabBarView(children: [LiveVideo(), News(), Videos(),PodCastHomePage ()]),
+        body: TabBarView(children: [LiveVideo(), News(), Videos(), AudioCastPage ()]),
       ),
     );
   }

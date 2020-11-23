@@ -3,13 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:tv24africa/screens/termsofuse.dart';
 import 'package:tv24africa/widgets/ratingdialog.dart';
-// import 'package:tv24africa/screens/rating_screens.dart';
-// import 'package:tv24africa/widgets/ratingdialog.dart';
-// import 'package:url_launcher/url_launcher.dart';
-// import 'package:tv24africa/widgets/customD_about.dart';
-// // import 'package:tv24africa/widgets/custom_notLang.dart';
 
-// import 'package:path_provider/path_provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -217,20 +211,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: Icon(Icons.share_outlined, color: Colors.white)),
                 )),
                 Divider(),
-                //  Container(
-                //   child:ListTile(
-                //     leading: Container(
-                //       height: 60,
-                //       width: 70,
-                //       decoration: BoxDecoration(
-                //         color: Colors.red,
-                //         borderRadius: BorderRadius.circular(10),
-                //       ),
-                //       child: Icon(Icons.music_note),
-                //     ),
-
-                //   )
-                // ),
+             
               ],
             ),
           ),
@@ -238,16 +219,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-
-  // _launchURL() async {
-  //   const url = 'https://tv24africa.com/terms-of-use/';
-  //   if (await canLaunch(url)) {
-  //     await launch(url);
-  //   } else {
-  //     throw 'Could not launch $url';
-  //   }
-  // }
-
+   
   _streamQuality() {
     showDialog(
         context: context,

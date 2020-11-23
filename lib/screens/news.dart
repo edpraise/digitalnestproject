@@ -150,6 +150,9 @@ class _NewsState extends State<News> {
                         shrinkWrap: true,
                         itemCount: snapshot.data.length,
                         itemBuilder: (BuildContext context, int index) {
+                          if(index ==0){
+                            return Container();
+                          }
                           if (index == snapshot.data.length - 1) {
                             return Container(
                               child: Column(

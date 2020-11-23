@@ -1,7 +1,8 @@
-
+import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:tv24africa/screens/settinng.dart';
 
@@ -35,7 +36,10 @@ class Company {
 }
 
 class _IReportState extends State<IReport> {
+
  
+ 
+  
   GlobalKey _formState = GlobalKey<FormState>();
 
   TextEditingController firstName;
@@ -45,25 +49,12 @@ class _IReportState extends State<IReport> {
   TextEditingController postTile;
   TextEditingController tag;
 
-  // List<Tags> _tags = Tags.getTags();
-  // List<DropdownMenuItem<Tags>> _dropDownItems;
-  // Tags _selectedTag;
+  
 
   List<Company> _companies = Company.getCompanies();
   List<DropdownMenuItem<Company>> _dropdownMenuItems;
   Company _selectedCompany;
 
-  // List<DropdownMenuItem<Tags>> buildDropDownMenueItems(List tags) {
-  //   List<DropdownMenuItem<Tags>> items = List();
-  //   for (Tags tags in tags) {
-  //     items.add(DropdownMenuItem(
-  //         value: tags,
-  //         child: Text(
-  //           tags.name,
-  //         )));
-  //   }
-  //   return items;
-  // }
   List<DropdownMenuItem<Company>> buildDropdownMenuItems(List companies) {
     List<DropdownMenuItem<Company>> items = List();
     for (Company company in companies) {
@@ -95,6 +86,17 @@ class _IReportState extends State<IReport> {
     postTile = TextEditingController();
     tag = TextEditingController();
   }
+
+//  File _image;
+//    final picker = ImagePicker();
+
+// Future getImage() async {
+// final pickedFile = await picker.getImage(source: ImageSource.camera);
+
+// setState(() {
+//     _image = File(pickedFile.path);
+//   });
+// }
 
 
   @override
@@ -288,9 +290,7 @@ class _IReportState extends State<IReport> {
                           SizedBox(
                             width: MediaQuery.of(context).size.width / 3,
                           ),
-                     
                           GestureDetector(
-                            
                             child: Container(
                                 height: 30,
                                 width: 100,
@@ -314,7 +314,6 @@ class _IReportState extends State<IReport> {
                             width: MediaQuery.of(context).size.width / 2.7,
                           ),
                           GestureDetector(
-                            
                             child: Container(
                                 height: 30,
                                 width: 100,
@@ -387,6 +386,4 @@ class _IReportState extends State<IReport> {
       _showCupertinoDialog();
     }
   }
-
-  
 }
