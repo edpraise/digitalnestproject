@@ -131,7 +131,7 @@ class MainDrawer extends StatelessWidget {
                   leading: IconButton(
                       color: Colors.white,
                       icon: FaIcon(
-                        FontAwesomeIcons.envelopeOpenText,
+                        FontAwesomeIcons.signature,
                       ),
                       onPressed: () {}),
                   title: Text(
@@ -151,7 +151,7 @@ class MainDrawer extends StatelessWidget {
                   leading: IconButton(
                       color: Colors.white,
                       icon: FaIcon(
-                        FontAwesomeIcons.envelopeOpenText,
+                        FontAwesomeIcons.ad,
                       ),
                       onPressed: () {}),
                   title: Text(

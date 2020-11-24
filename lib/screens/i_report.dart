@@ -1,10 +1,11 @@
-import 'dart:html';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:tv24africa/screens/settinng.dart';
+import 'package:video_player/video_player.dart';
 
 class IReport extends StatefulWidget {
   @override
@@ -36,10 +37,36 @@ class Company {
 }
 
 class _IReportState extends State<IReport> {
+  VideoPlayerController _videoPlayerController;
+  File _image;
+  final picker = ImagePicker();
 
- 
- 
-  
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  File _video;
+  final vPicker = ImagePicker();
+
+// This funcion will helps you to pick a Video File
+  _pickVideo() async {
+    PickedFile pickedFile = await picker.getVideo(source: ImageSource.gallery);
+    _video = File(pickedFile.path);
+    _videoPlayerController = VideoPlayerController.file(_video)
+      ..initialize().then((_) {
+        setState(() {});
+        _videoPlayerController.play();
+      });
+  }
+
   GlobalKey _formState = GlobalKey<FormState>();
 
   TextEditingController firstName;
@@ -48,8 +75,6 @@ class _IReportState extends State<IReport> {
   TextEditingController comment;
   TextEditingController postTile;
   TextEditingController tag;
-
-  
 
   List<Company> _companies = Company.getCompanies();
   List<DropdownMenuItem<Company>> _dropdownMenuItems;
@@ -86,22 +111,11 @@ class _IReportState extends State<IReport> {
     postTile = TextEditingController();
     tag = TextEditingController();
   }
-
-//  File _image;
-//    final picker = ImagePicker();
-
-// Future getImage() async {
-// final pickedFile = await picker.getImage(source: ImageSource.camera);
-
-// setState(() {
-//     _image = File(pickedFile.path);
-//   });
-// }
-
-
+final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xFFbd1017),
         title: Image.asset(
@@ -239,10 +253,10 @@ class _IReportState extends State<IReport> {
                         minLines: 5,
                         maxLines: 500,
                         decoration: new InputDecoration(
-                          labelText: "Add a commment",
+                          labelText: "Post Content",
                           fillColor: Colors.white,
                           border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(25.0),
+                            borderRadius: new BorderRadius.circular(15.0),
                             borderSide: new BorderSide(),
                           ),
                           //fillColor: Colors.green
@@ -260,13 +274,71 @@ class _IReportState extends State<IReport> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 30,
+                      ),
+                      Text('Selected Media',
+                          style: TextStyle(
+                            color: Colors.black,
+                              fontWeight: FontWeight.bold, fontSize: 20)),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        // width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.6)),
+                              height: 200,
+                              width: 150,
+                              child: Center(
+                                  child: _image == null
+                                      ? Text('No image selected.')
+                                      : Image.file(_image, fit: BoxFit.cover)),
+                            ),
+                            SizedBox(width: 20),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.6)),
+                                height: 200,
+                                width: 130,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    if (_video != null)
+                                      _videoPlayerController.value.initialized
+                                          ? AspectRatio(
+                                              aspectRatio:
+                                                  _videoPlayerController
+                                                      .value.aspectRatio,
+                                              child: VideoPlayer(
+                                                _videoPlayerController,
+                                              ),
+                                            )
+                                          : Container()
+                                    else
+                                      Center(
+                                        child: Text(
+                                          "No video selected",
+                                          style: TextStyle(fontSize: 15.0),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            Text('Category'),
+                            Text('Category',style: TextStyle(color: Colors.black)),
                             SizedBox(
                                 width: MediaQuery.of(context).size.width / 3),
                             DropdownButton(
@@ -286,21 +358,24 @@ class _IReportState extends State<IReport> {
                       ),
                       Row(
                         children: [
-                          Text('Featured Image'),
+                          Text('Featured Image',style: TextStyle(color: Colors.black)),
                           SizedBox(
                             width: MediaQuery.of(context).size.width / 3,
                           ),
                           GestureDetector(
+                            onTap: () {
+                              getImage();
+                            },
                             child: Container(
-                                height: 30,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFbd1017),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Center(
-                                    child: Text('upload an image',
-                                        style:
-                                            TextStyle(color: Colors.white)))),
+                              height: 40,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFbd1017),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Center(
+                                  child: Text('upload ',
+                                      style: TextStyle(color: Colors.black))),
+                            ),
                           )
                         ],
                       ),
@@ -309,24 +384,71 @@ class _IReportState extends State<IReport> {
                       ),
                       Row(
                         children: [
-                          Text('video (if any)'),
+                          Text('video (if any)',style: TextStyle(color: Colors.black)),
                           SizedBox(
                             width: MediaQuery.of(context).size.width / 2.7,
                           ),
                           GestureDetector(
+                            onTap: () {
+                              _pickVideo();
+                            },
                             child: Container(
-                                height: 30,
+                                height: 40,
                                 width: 100,
                                 decoration: BoxDecoration(
                                     color: Color(0xFFbd1017),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(
-                                    child: Text('upload a video',
+                                    child: Text('upload ',
                                         style:
-                                            TextStyle(color: Colors.white)))),
+                                            TextStyle(color: Colors.black))),
                           )
-                        ],
+                          )],
                       ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          height: 50,
+                          width: MediaQuery.of(context).size.width / 1.4,
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.6)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: InkWell(
+                                  onTap: () {
+                                         var snackBar = SnackBar(content: Row(
+                                           children: [
+                                             Text('''I'm not a robit'''),
+                                             Icon(Icons.person_pin_circle)
+                                           ],
+                                         ));
+            _scaffoldKey.currentState.showSnackBar(snackBar);
+                                  },
+                                  child: Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration:
+                                        BoxDecoration(color: Colors.white),
+                                    child: Icon(Icons.touch_app),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                    height: 40,
+                                    width: 40,
+                                    child: Image(
+                                        height: 40,
+                                        image: AssetImage(
+                                            'assets/images/rc.jpg'))),
+                              )
+                            ],
+                          )),
                       GestureDetector(
                         onTap: () {
                           _submit(context);

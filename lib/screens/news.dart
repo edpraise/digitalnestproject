@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tv24africa/services/wo_rest_api_singledata.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -62,6 +63,8 @@ class _NewsState extends State<News> {
     }
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +115,7 @@ class _NewsState extends State<News> {
 
                                 Container(
                                   alignment: Alignment.bottomCenter,
-                                  // height: 100,
+                                 
                                   // width: MediaQuery.of(context).size.width,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10.0),
@@ -283,13 +286,14 @@ class _NewsState extends State<News> {
                                               const EdgeInsets.only(top: 5.0),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              wppost['title']['rendered'],
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12.5,
-                                                // fontWeight: FontWeight.bold
-                                              ),
+                                            child: Html(
+
+                                              data:wppost['title']['rendered'],
+                                              // style: TextStyle(
+                                              //   color: Colors.white,
+                                              //   fontSize: 12.5,
+                                              //   // fontWeight: FontWeight.bold
+                                              // ),
                                             ),
                                           ),
                                         ),

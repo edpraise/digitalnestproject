@@ -20,7 +20,19 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
     primarySwatch: Colors.blue,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+
+    
+    textTheme: TextTheme(
+      bodyText1: TextStyle( color: Colors.white),
+      bodyText2: TextStyle(color:Colors.white),
+    ).apply(
+      bodyColor: Colors.white ,
+      displayColor: Colors.white,
+    ),
+  ),
+
+        
+        
         home:SplashScreen(),
         // home: PodcastList(),
       );

@@ -73,7 +73,7 @@ class _CurrentPlayState extends State<CurrentPlay> {
                            ],
               ),
               SizedBox(height: 20,),
-              Text(widget.title,style: TextStyle(fontSize: 20, )),
+              Text(widget.title,style: TextStyle(fontSize: 20,color: Colors.black)),
               slider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

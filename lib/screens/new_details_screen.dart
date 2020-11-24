@@ -13,16 +13,17 @@ class FeedDetails extends StatelessWidget {
  
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFFbd1017),
         leading: new IconButton(
             icon: new Icon(Icons.arrow_back),
-            color: Colors.black,
+          
             onPressed: () => Navigator.of(context).pop()),
         elevation: 0.0,
         title: Text("Tv24Africa News Feed"),
         centerTitle: true,
-        backgroundColor: Colors.white,
+      
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Container(
         child: Padding(
           padding: EdgeInsets.all(10.0),
@@ -35,7 +36,7 @@ class FeedDetails extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  wppost['title']['rendered'].toString(),
+                  wppost['title']['rendered'],
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20
