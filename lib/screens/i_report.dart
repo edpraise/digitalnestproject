@@ -422,7 +422,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                                   onTap: () {
                                          var snackBar = SnackBar(content: Row(
                                            children: [
-                                             Text('''I'm not a robit'''),
+                                             Text('''I'm not a robot'''),
                                              Icon(Icons.person_pin_circle)
                                            ],
                                          ));

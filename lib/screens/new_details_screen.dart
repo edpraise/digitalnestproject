@@ -35,12 +35,12 @@ class FeedDetails extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  wppost['title']['rendered'],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20
-                  ),
+                child: Html(
+                  data:wppost['title']['rendered'],
+                  // style: TextStyle(
+                  //   fontWeight: FontWeight.bold,
+                  //   fontSize: 20
+                  // ),
                 ),
               ),
              
