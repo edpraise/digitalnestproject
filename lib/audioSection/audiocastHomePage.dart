@@ -9,31 +9,39 @@ class AudioCastPage extends StatefulWidget {
 class _AudioCastPageState extends State<AudioCastPage> {
   List audioCastList = [
     {
-      'imgUrl': 'assets/images/pc.jpg',
-      'audioUrl': 'https://tv24africa.com/wp-content/uploads/2020/09/FOCAL-POINT-1-2.mp3',
+      'imgUrl':
+          'https://tv24africa.com/wp-content/uploads/2020/09/IMG_1828.jpg',
+      'audioUrl':
+          'https://tv24africa.com/wp-content/uploads/2020/09/FOCAL-POINT-1-2.mp3',
       'title': 'Matters of the Heart',
     },
     {
-      'imgUrl': 'assets/images/pc.jpg',
-      'audioUrl': 'https://tv24africa.com/wp-content/uploads/2020/09/Focal-Point-1-2.mp3',
+      'imgUrl':
+          'https://tv24africa.com/wp-content/uploads/2020/09/IMG_1505.jpg',
+      'audioUrl':
+          'https://tv24africa.com/wp-content/uploads/2020/09/Focal-Point-1-2.mp3',
       'title': 'Stimulating the Economy of Kogi State',
     },
     {
-      'imgUrl': 'assets/images/pc.jpg',
-      'audioUrl': 'https://tv24africa.com/wp-content/uploads/2020/09/FOCAL-POINT-1.mp3',
+      'imgUrl':
+          'https://tv24africa.com/wp-content/uploads/2020/09/IMG_1506.jpg',
+      'audioUrl':
+          'https://tv24africa.com/wp-content/uploads/2020/09/FOCAL-POINT-1.mp3',
       'title': 'Focal Point: Diversifying the Economy of Kogi State',
     },
     {
-      'imgUrl': 'assets/images/pc.jpg',
-      'audioUrl': 'https://tv24africa.com/wp-content/uploads/2020/09/FOCAL-POINT.mp3',
+      'imgUrl':
+          'https://tv24africa.com/wp-content/uploads/2020/09/IMG_1464-1068x586.jpg',
+      'audioUrl':
+          'https://tv24africa.com/wp-content/uploads/2020/09/FOCAL-POINT.mp3',
       'title': 'Turning Around the Internal Revenue Generation of Kogi State',
     },
-    {
-      'imgUrl': 'assets/images/pc.jpg',
-      'audioUrl': '',
-      'title':
-          'What Nigerian Leader’s New Chief of Staff Said About Serving the...',
-    },
+    // {
+    //   'imgUrl': 'assets/images/pc.jpg',
+    //   'audioUrl': '',
+    //   'title':
+    //       'What Nigerian Leader’s New Chief of Staff Said About Serving the...',
+    // },
     // {
     //   'imgUrl': 'assets/images/pc.jpg',
     //   'audioUrl': '',
@@ -84,17 +92,53 @@ class _AudioCastPageState extends State<AudioCastPage> {
     //   'title': 'South Africa Virus',
     // },
   ];
-
+final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
         body: ListView.builder(
       itemCount: audioCastList.length,
       itemBuilder: (BuildContext context, int index) {
+        if (index == audioCastList.length - 1) {
+          return Padding(
+            padding: const EdgeInsets.only(left:80,right: 80, top: 30),
+            child: GestureDetector(
+              onTap: (){
+                     var snackBar = SnackBar(content: Container(
+                       decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(20)
+                       ),
+                       child: Row(
+                                             children: [
+                                               Text('No more podcast  at the time'),
+                                               Icon(Icons.not_accessible)
+                                             ],
+                                           ),
+                     ),
+                                         );
+            _scaffoldKey.currentState.showSnackBar(snackBar);
+              },
+                          child: Container(
+                height: 50,
+                // width: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFFbd1017),
+                ),
+                child: Center(child: Text('Tap to load more Podcasts')),
+              ),
+            ),
+          );
+        }
         return GestureDetector(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CurrentPlay(url:audioCastList[index]['audioUrl'],title: audioCastList[index]['title'])));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CurrentPlay(
+                        url: audioCastList[index]['audioUrl'],
+                        title: audioCastList[index]['title'])));
           },
           child: Pdc(
             title: audioCastList[index]['title'],
@@ -114,7 +158,7 @@ class Pdc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:3.0, left: 10, right:10),
+      padding: const EdgeInsets.only(top: 3.0, left: 10, right: 10),
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Container(
@@ -134,17 +178,20 @@ class Pdc extends StatelessWidget {
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(50)),
                   child: Image(
-                      image: AssetImage(
+                      image: NetworkImage(
                     imgUrl,
                   )),
                 ),
                 Expanded(
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    child: Text(
-                      title,
-                      style: TextStyle(color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      child: Text(
+                        title,
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),

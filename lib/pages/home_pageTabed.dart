@@ -16,11 +16,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFFbd1017),
-          title: Image.asset('assets/images/tony.png', fit: BoxFit.cover,height: 50,),
+          title: Image.asset('assets/images/ic.png', fit: BoxFit.cover,height: 50,),
           actions: <Widget>[
             IconButton(
               icon: Icon(

@@ -75,6 +75,10 @@ class _VideosState extends State<Videos> {
   @override
   void initState() {
      _controller = YoutubePlayerController(
+       flags: YoutubePlayerFlags(
+        mute: false,
+        autoPlay: false,
+      ),
       initialVideoId: YoutubePlayer.convertUrlToId(url),
     );
     super.initState();
@@ -168,6 +172,7 @@ class _VideosState extends State<Videos> {
                       color: Color(0xFFbd1017),
                     ),
                     child: YoutubePlayer(
+                      
                       controller: _controller,
                     ),
                   ),

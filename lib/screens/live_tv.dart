@@ -105,7 +105,7 @@ class _LiveVideoState extends State<LiveVideo> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Latest Video',
-                    style: TextStyle(color: Color(0xFFbd1017), fontSize: 20)),
+                    style: TextStyle(color: Color(0xFFbd1017), fontSize: 20,fontWeight: FontWeight.bold)),
                 // singleVideo == null
                 //     ? Center(
                 //         child: CircularProgressIndicator(),
@@ -132,53 +132,63 @@ class _LiveVideoState extends State<LiveVideo> {
                 //       ),
 
                 Stack(
-                        children: [
-                                     Container(
-                    decoration: BoxDecoration(
-                      // shape: 
-                    ),
-                    child: YoutubePlayer(
-                      controller: _controller,
-                    ),
-                  ),
-                  Positioned(
-                    right: 10,
-                    bottom: 5,
-                    child: Container(
-                      height: 60,
-                      width: 60,
+                  children: [
+                    Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(60),
-                          color: Colors.black87),
-
-                      child: IconButton(
-                        color: Colors.white,
-                        icon: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Icon(
-                            Icons.call,
-                            color:Colors.white,
-                            size: 35,
+                          // shape:
+                          ),
+                      child: YoutubePlayer(
+                        controller: _controller,
+                      ),
+                    ),
+                   
+                    Positioned(
+                      right: 10,
+                      bottom: 0,
+                      child: Container(
+                        height: 50,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(60),
+                            color: Color(0xFFbd1017)),
+                        child: GestureDetector(
+                          onTap: () {
+                            callnow();
+                          },
+                          child: Container(
+                            height: 40,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Color(0xFFbd1017),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(Icons.phone, color: Colors.white),
+                                Text(
+                                  'Call to Listen',
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                        onPressed: () {
-                          callnow();
-                        },
                       ),
-                      //  child: Icon(Icons.call, color: Colors.white, size: 40,),
-                    ),
-                  )
-                        ],
+                    )
+                  ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Row(
                     children: [
-                      Text("Latest Videos ",
-                          style:
-                              TextStyle(color: Color(0xFFbd1017), fontSize: 20)),
-                      
+                      Text(
+                        "All Videos ",
+                        style: TextStyle(
+                            color: Color(0xFFbd1017),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                 ),
@@ -196,20 +206,23 @@ class _LiveVideoState extends State<LiveVideo> {
                         },
                         child: GridView.builder(
                           physics: NeverScrollableScrollPhysics(),
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2, crossAxisSpacing: 2.0),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2, crossAxisSpacing: 2.0),
                           shrinkWrap: true,
                           itemCount: _channel.videos.length,
                           itemBuilder: (BuildContext context, int index) {
-                             if (index == _channel.videos.length-0 ) {
-                            return Container(
+                            if (index == _channel.videos.length - 0) {
+                              return Container(
                                 child: Center(
-                  child: Text("CopyRight @ Tv24Africa 2020",
-                      style: TextStyle(color: Color(0xFFbd1017), fontSize: 15)),
-                ),
-                            );
-                          }
-                            
+                                  child: Text("CopyRight @ Tv24Africa 2020",
+                                      style: TextStyle(
+                                          color: Color(0xFFbd1017),
+                                          fontSize: 15)),
+                                ),
+                              );
+                            }
+
                             Video video = _channel.videos[index];
                             return _buildVideo(video);
                           },
@@ -220,7 +233,6 @@ class _LiveVideoState extends State<LiveVideo> {
                           backgroundColor: Colors.redAccent[700],
                         ),
                       ),
-                
               ],
             ),
           ),
@@ -228,6 +240,7 @@ class _LiveVideoState extends State<LiveVideo> {
       ),
     );
   }
+
   callnow() {
     String phoneNumber = "tel:" + phoneNumber1;
     launch(phoneNumber);

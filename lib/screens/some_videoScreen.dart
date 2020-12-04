@@ -32,38 +32,36 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-          child: Scaffold(
+    return Scaffold(
         backgroundColor: Color(0xFF1a1a1a),
         body: SafeArea(
-                child: Column(
-            children: [
-              Container(height: 20,),
-              YoutubePlayer(
-                controller: _controller,
-                showVideoProgressIndicator: true,
-                onReady: () {
-                  print('Player is ready.');
-                },
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Expanded(
-                    child: Text(
-                      widget.video.title,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-              ),
-            ],
-          ),
+          child: Column(
+      children: [
+        Container(height: 40,),
+        YoutubePlayer(
+          controller: _controller,
+          showVideoProgressIndicator: true,
+          onReady: () {
+            print('Player is ready.');
+          },
         ),
-      ),
-    );
+        SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Expanded(
+              child: Text(
+                widget.video.title,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+        ),
+      ],
+    ),
+        ),
+      );
   }
 }

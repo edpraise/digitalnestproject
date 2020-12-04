@@ -287,7 +287,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                     children: [
                       new Padding(padding: EdgeInsets.only(top: 10.0)),
                       new Text(
-                        'Submit your Report',
+                        'Submit A Pitch',
                         style: new TextStyle(color: Colors.red, fontSize: 25.0),
                       ),
                       new Padding(padding: EdgeInsets.only(top: 20.0)),
@@ -314,29 +314,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                           fontFamily: "Poppins",
                         ),
                       ),
-                      new Padding(padding: EdgeInsets.only(top: 20.0)),
-                      new TextFormField(
-                        decoration: new InputDecoration(
-                          labelText: " name(The name of your post please)",
-                          fillColor: Colors.white,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: new BorderSide(),
-                          ),
-                          //fillColor: Colors.green
-                        ),
-                        validator: (val) {
-                          if (val.length == 0) {
-                            return "post title/ Name cannot be empty";
-                          } else {
-                            return null;
-                          }
-                        },
-                        keyboardType: TextInputType.emailAddress,
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
+                      
                       new Padding(padding: EdgeInsets.only(top: 20.0)),
                       new TextFormField(
                         decoration: new InputDecoration(
@@ -424,10 +402,11 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            Text('Program genre'),
+                            Text('Program genre', style: TextStyle(color: Colors.black)),
                             SizedBox(
                                 width: MediaQuery.of(context).size.width / 4),
                             DropdownButton(
+                              style: TextStyle(color: Colors.black),
                               value: _selectedCompany,
                               items: _dropdownMenuItems,
                               onChanged: onChangeDropdownItem,
@@ -437,31 +416,64 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 120.0),
-                        // child: Text('Selected: ${_selectedCompany.name}'),
+                        child: Text('Selected: ${_selectedCompany.name}', style: TextStyle(color: Colors.black)),
                       ),
-                      Row(
-                        children: [
-                          Text('Featured Image',style: TextStyle(color: Colors.black)),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width / 3,
+                       SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                         
+                        ),
+                        child: new TextFormField(
+                        decoration: new InputDecoration(
+                          labelText: " Evidence or links to previous works",
+                          fillColor: Colors.white,
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(25.0),
+                            borderSide: new BorderSide(),
                           ),
-                          GestureDetector(
-                            onTap: (){
-                               getImage();
-                            },
-                            child: Container(
-                                height: 30,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFbd1017),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Center(
-                                    child: Text('Insert Image',
-                                        style:
-                                            TextStyle(color: Colors.black)))),
-                          )
-                        ],
+                          //fillColor: Colors.green
+                        ),
+                        validator: (val) {
+                          if (val.length == 0) {
+                            return "Email cannot be empty";
+                          } else {
+                            return null;
+                          }
+                        },
+                        keyboardType: TextInputType.url,
+                        style: new TextStyle(
+                          fontFamily: "Poppins",
+                        ),
                       ),
+                      ),
+                      // Row(
+                      //   children: [
+                      //     Text('Featured Image',style: TextStyle(color: Colors.black)),
+                      //     SizedBox(
+                      //       width: MediaQuery.of(context).size.width / 3,
+                      //     ),
+                      //     GestureDetector(
+                      //       onTap: (){
+                      //          getImage();
+                      //       },
+                      //       child: Container(
+                      //           height: 30,
+                      //           width: 100,
+                      //           decoration: BoxDecoration(
+                      //               color: Color(0xFFbd1017),
+                      //               borderRadius: BorderRadius.circular(10)),
+                      //           child: Center(
+                      //               child: Text('Insert Image',
+                      //                   style:
+                      //                       TextStyle(color: Colors.black)))),
+                      //     )
+                      //   ],
+                      // ),
                       SizedBox(
                         height: 20,
                       ),
@@ -474,33 +486,34 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
               SizedBox(
                         height: 10,
                       ),
-                      Text('Selected Media',
-                          style: TextStyle(
-                            color: Colors.black,
-                              fontWeight: FontWeight.bold, fontSize: 20)),
+                      // Text('Selected Media',
+                      //     style: TextStyle(
+                      //       color: Colors.black,
+                      //         fontWeight: FontWeight.bold, fontSize: 20)),
                       SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        // width: MediaQuery.of(context).size.width,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.6)),
-                              height: 100,
-                              width:100,
-                              child: Center(
-                                  child: _image == null
-                                      ? Padding(
-                                        padding: const EdgeInsets.all(15.0),
-                                        child: Text('No image selected.', style: TextStyle(color: Colors.black)),
-                                      )
-                                      : Image.file(_image,  width: MediaQuery.of(context).size.width)),
-                            ),
+        //               Container(
+        //                 // width: MediaQuery.of(context).size.width,
+        //                 child: Row(
+        //                   mainAxisAlignment: MainAxisAlignment.center,
+        //                   children: [
+        //                     Container(
+        //                       decoration: BoxDecoration(
+        //                           color: Colors.black.withOpacity(0.6)),
+        //                       height: 100,
+        //                       width:100,
+        //                       child: Center(
+        //                           child: _image == null
+        //                               ? Padding(
+        //                                 padding: const EdgeInsets.all(15.0),
+        //                                 child: Text('No image selected.', style: TextStyle(color: Colors.black)),
+        //                               )
+        //                               : Image.file(_image,  width: MediaQuery.of(context).size.width)),
+        //                     ),
                             
-        ])),
+        // ]),
+        // ),
         SizedBox(height:20),
 
         Text('Stage of Program',style: TextStyle(fontSize:20,color: Colors.black)),
@@ -512,6 +525,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                   // mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text("Yet  to commence",style: TextStyle(color: Colors.black)),
+                    SizedBox(width: 10,),
                     Checkbox(
                       value: yetoCommenceVal,
                       onChanged: (bool value) {
@@ -526,7 +540,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                   // mainAxisAlignment: MainAxisAlignment.,
                   children: <Widget>[
                     Text("Ongoing",style: TextStyle(color: Colors.black)),
-                    SizedBox(width: 60,),
+                    SizedBox(width: 62,),
                     Checkbox(
                       value: ongoingVal,
                       onChanged: (bool value) {
@@ -541,7 +555,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Text("Complete",style: TextStyle(color: Colors.black)),
-                    SizedBox(width: 50,),
+                    SizedBox(width: 55,),
                     Checkbox(
                       value: completedVal,
                       onChanged: (bool value) {
@@ -571,7 +585,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                                   onTap: () {
                                          var snackBar = SnackBar(content: Row(
                                            children: [
-                                             Text('''I'm not a robot'''),
+                                             Text('''I am not a robot'''),
                                              Icon(Icons.person_pin_circle)
                                            ],
                                          ));

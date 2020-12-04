@@ -182,7 +182,7 @@ class ProgramList extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[Text(desc)],
+                  children: <Widget>[Text(desc, style:TextStyle(color:Colors.black)),],
                 ),
               ),
             ],

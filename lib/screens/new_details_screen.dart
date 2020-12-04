@@ -19,7 +19,7 @@ class FeedDetails extends StatelessWidget {
           
             onPressed: () => Navigator.of(context).pop()),
         elevation: 0.0,
-        title: Text("Tv24Africa News Feed"),
+        title: Text("Feed"),
         centerTitle: true,
       
       ),

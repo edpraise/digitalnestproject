@@ -74,7 +74,7 @@ class _IReportState extends State<IReport> {
   TextEditingController email;
   TextEditingController comment;
   TextEditingController postTile;
-  TextEditingController tag;
+  // TextEditingController tag;
 
   List<Company> _companies = Company.getCompanies();
   List<DropdownMenuItem<Company>> _dropdownMenuItems;
@@ -109,7 +109,7 @@ class _IReportState extends State<IReport> {
     email = TextEditingController();
     comment = TextEditingController();
     postTile = TextEditingController();
-    tag = TextEditingController();
+    // tag = TextEditingController();
   }
 final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
@@ -179,29 +179,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                           fontFamily: "Poppins",
                         ),
                       ),
-                      new Padding(padding: EdgeInsets.only(top: 20.0)),
-                      new TextFormField(
-                        decoration: new InputDecoration(
-                          labelText: " first and Last Name",
-                          fillColor: Colors.white,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: new BorderSide(),
-                          ),
-                          //fillColor: Colors.green
-                        ),
-                        validator: (val) {
-                          if (val.length == 0) {
-                            return "first and Last Name cannot be empty";
-                          } else {
-                            return null;
-                          }
-                        },
-                        keyboardType: TextInputType.emailAddress,
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
+                    
                       new Padding(padding: EdgeInsets.only(top: 20.0)),
                       new TextFormField(
                         decoration: new InputDecoration(
@@ -225,29 +203,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                           fontFamily: "Poppins",
                         ),
                       ),
-                      new Padding(padding: EdgeInsets.only(top: 20.0)),
-                      new TextFormField(
-                        decoration: new InputDecoration(
-                          labelText: " Tag",
-                          fillColor: Colors.white,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: new BorderSide(),
-                          ),
-                          //fillColor: Colors.green
-                        ),
-                        validator: (val) {
-                          if (val.length == 0) {
-                            return "tag field cannot be empty";
-                          } else {
-                            return null;
-                          }
-                        },
-                        keyboardType: TextInputType.emailAddress,
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
+                     
                       new Padding(padding: EdgeInsets.only(top: 20.0)),
                       new TextFormField(
                         minLines: 5,
@@ -422,7 +378,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                                   onTap: () {
                                          var snackBar = SnackBar(content: Row(
                                            children: [
-                                             Text('''I'm not a robot'''),
+                                             Text('''I am not a robot'''),
                                              Icon(Icons.person_pin_circle)
                                            ],
                                          ));

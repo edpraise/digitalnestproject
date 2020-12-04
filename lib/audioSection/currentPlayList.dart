@@ -12,13 +12,20 @@ class CurrentPlay extends StatefulWidget {
 }
 
 class _CurrentPlayState extends State<CurrentPlay> {
-  
-  AudioPlayer audioPlayer = new AudioPlayer();
+  AudioPlayer audioPlayer = AudioPlayer();
 
   Duration duration = new Duration();
   Duration position = new Duration();
 
   bool playing = false;
+
+  @override
+  void dispose() {
+    super.dispose();
+    audioPlayer.stop();
+    audioPlayer.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,45 +42,42 @@ class _CurrentPlayState extends State<CurrentPlay> {
           child: Column(
             children: [
               Stack(
-                           
-                           children: [
-                             Container(
-                               height: 300,
-                               width:MediaQuery.of(context).size.width,
-                               decoration: BoxDecoration(
-                                 gradient: SweepGradient(
-              colors: [
-                Colors.black,
-                Colors.black54,
-                Colors.black38,
-                Colors.black45,
-              ],
-              stops: [0.8, 0.96, 0.74, 0.22, 0.85],
-              startAngle: 0.5,
-        endAngle: 1
-            ),
-          ),
-                               ),
-                             
-                               Container(
-                  height: 270,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration( 
-                   
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('assets/images/disc.jpg')
+                children: [
+                  Container(
+                    height: 300,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      gradient: SweepGradient(colors: [
+                        Colors.black,
+                        Colors.black54,
+                        Colors.black38,
+                        Colors.black45,
+                      ], stops: [
+                        0.8,
+                        0.96,
+                        0.74,
+                        0.22,
+                        0.85
+                      ], startAngle: 0.5, endAngle: 1),
                     ),
-                    shape: BoxShape.circle,
-                    color: Colors.redAccent[700]  
                   ),
-                 
-                 
-                )
-                           ],
+                  Container(
+                    height: 270,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage('assets/images/disc.jpg')),
+                        shape: BoxShape.circle,
+                        color: Colors.redAccent[700]),
+                  )
+                ],
               ),
-              SizedBox(height: 20,),
-              Text(widget.title,style: TextStyle(fontSize: 20,color: Colors.black)),
+              SizedBox(
+                height: 20,
+              ),
+              Text(widget.title,
+                  style: TextStyle(fontSize: 20, color: Colors.black)),
               slider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -108,9 +112,8 @@ class _CurrentPlayState extends State<CurrentPlay> {
 
   Widget slider() {
     return Slider.adaptive(
-      activeColor: Colors.redAccent[700],
-      inactiveColor: Colors.black,
-      
+        activeColor: Colors.redAccent[700],
+        inactiveColor: Colors.black,
         min: 0.0,
         max: duration.inSeconds.toDouble(),
         value: position.inSeconds.toDouble(),
