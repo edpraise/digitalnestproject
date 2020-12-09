@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:tv24africa/screens/settinng.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:tv24africa/models/video_model.dart';
+import 'package:flutter_share/flutter_share.dart';
 
+// import "dart:ui" as ui;
 class VideoScreen extends StatefulWidget {
   final Video video;
 
@@ -14,6 +16,14 @@ class VideoScreen extends StatefulWidget {
 }
 
 class _VideoScreenState extends State<VideoScreen> {
+  Future<void> share(String title) async {
+    await FlutterShare.share(
+        title: widget.video.title,
+        text: title,
+        linkUrl: widget.video.thumbnailUrl,
+        chooserTitle: 'Share this video link with friends?');
+  }
+
   YoutubePlayerController _controller;
 
   @override
@@ -27,6 +37,7 @@ class _VideoScreenState extends State<VideoScreen> {
       ),
     );
   }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -62,36 +73,58 @@ class _VideoScreenState extends State<VideoScreen> {
         ],
       ),
       backgroundColor: Color(0xFF1a1a1a),
-      body: Center(
-        child: Column(
-          children: [
-            
-            Container(
-              height: MediaQuery.of(context).size.height/1.8,
-              child: YoutubePlayer(
-                controller: _controller,
-                showVideoProgressIndicator: true,
-                onReady: () {
-                  print('Player is ready.');
-                },
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Expanded(
-                child: Text(
-                  widget.video.title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500,
+      body: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height / 1.8,
+                  child: YoutubePlayer(
+                    controller: _controller,
+                    showVideoProgressIndicator: true,
+                    onReady: () {
+                      print('Player is ready.');
+                    },
                   ),
+                ),
+                SizedBox(height: 20),
+                Expanded(
+                                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      widget.video.title,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            // bottom: 1,
+            left: 20,
+            top: 80,
+            // right: -1,
+            child: InkWell(
+              onTap: () {
+                share('text');
+              },
+              child: Container(
+                child: Icon(
+                  Icons.share,
+                  size: 40,
+                  color: Colors.redAccent[700],
                 ),
               ),
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

@@ -161,9 +161,12 @@ class _VideosState extends State<Videos> {
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // crossAxisAlignment: Cros,
         children: [
           Container(
-              height: MediaQuery.of(context).size.height / 3,
+              height: MediaQuery.of(context).size.height / 3.3,
               child: Stack(
                 children: [
                   Container(
@@ -205,7 +208,11 @@ class _VideosState extends State<Videos> {
                   // )
                 ],
               )),
-          SizedBox(height: 2),
+          // SizedBox(height: 2),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Others', style: TextStyle(color: Colors.redAccent[700])),
+          ),
           Column(
             children: [
               _channel != null

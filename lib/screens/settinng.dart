@@ -12,6 +12,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   String link = 'https://tv24africa.com/';
+  
   Future<void> share(dynamic link, String title) async {
     await FlutterShare.share(
         title: 'Tv24 Africa',

@@ -64,13 +64,13 @@ class _LiveVideoState extends State<LiveVideo> {
                 image: NetworkImage(video.thumbnailUrl),
               ),
             ),
-            SizedBox(width: 8.0, height: 8),
+            SizedBox(width: 0.0, height: 2),
             Expanded(
               child: Text(
                 video.title,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 15.0,
+                  fontSize: 12.0,
                 ),
               ),
             ),
@@ -105,7 +105,7 @@ class _LiveVideoState extends State<LiveVideo> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Latest Video',
-                    style: TextStyle(color: Color(0xFFbd1017), fontSize: 20,fontWeight: FontWeight.bold)),
+                    style: TextStyle(color: Color(0xFFbd1017), fontSize: 15,fontWeight: FontWeight.bold)),
                 // singleVideo == null
                 //     ? Center(
                 //         child: CircularProgressIndicator(),
@@ -143,11 +143,11 @@ class _LiveVideoState extends State<LiveVideo> {
                     ),
                    
                     Positioned(
-                      right: 10,
+                      right: 3,
                       bottom: 0,
                       child: Container(
-                        height: 50,
-                        width: 100,
+                        height: 40,
+                        width: 130,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(60),
                             color: Color(0xFFbd1017)),
@@ -157,12 +157,13 @@ class _LiveVideoState extends State<LiveVideo> {
                           },
                           child: Container(
                             height: 40,
-                            width: 80,
+                            width:200,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Color(0xFFbd1017),
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(Icons.phone, color: Colors.white),
                                 Text(
@@ -177,7 +178,7 @@ class _LiveVideoState extends State<LiveVideo> {
                     )
                   ],
                 ),
-                SizedBox(height: 10),
+                // SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Row(
@@ -186,7 +187,7 @@ class _LiveVideoState extends State<LiveVideo> {
                         "All Videos ",
                         style: TextStyle(
                             color: Color(0xFFbd1017),
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold),
                       ),
                     ],

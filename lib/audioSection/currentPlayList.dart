@@ -3,21 +3,41 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_html/html_parser.dart';
 
 class CurrentPlay extends StatefulWidget {
+  final List<dynamic> podcastScreen;
+  final int index;
   final String url;
   final String title;
 
-  const CurrentPlay({Key key, this.url, this.title}) : super(key: key);
+  const CurrentPlay(
+      {Key key, this.url, this.title, this.podcastScreen, this.index})
+      : super(key: key);
   @override
-  _CurrentPlayState createState() => _CurrentPlayState();
+  _CurrentPlayState createState() => _CurrentPlayState(index, podcastScreen);
 }
 
 class _CurrentPlayState extends State<CurrentPlay> {
+  final int index;
+  final List<dynamic> podcastScreen;
   AudioPlayer audioPlayer = AudioPlayer();
 
   Duration duration = new Duration();
   Duration position = new Duration();
 
   bool playing = false;
+  bool next = false;
+  bool previous = false;
+
+  int mainIndex;
+
+  _CurrentPlayState(this.index, this.podcastScreen);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    mainIndex = index;
+     getAudio(widget.podcastScreen[mainIndex]['audioUrl']);
+  }
 
   @override
   void dispose() {
@@ -76,19 +96,25 @@ class _CurrentPlayState extends State<CurrentPlay> {
               SizedBox(
                 height: 20,
               ),
-              Text(widget.title,
+              Text(widget.podcastScreen[mainIndex]['title'],
                   style: TextStyle(fontSize: 20, color: Colors.black)),
               slider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                // crossAxisAlignment: Cross,
                 children: [
-                  // Icon(
-                  //   Icons.shuffle,
-                  //   size: 50,
-                  // ),
                   InkWell(
                     onTap: () {
-                      getAudio(widget.url);
+                      prevSong();
+                    },
+                    child: Icon(
+                      Icons.fast_rewind,
+                      size: 40,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      getAudio(widget.podcastScreen[mainIndex]['audioUrl']);
                     },
                     child: Icon(
                       playing == false
@@ -97,10 +123,15 @@ class _CurrentPlayState extends State<CurrentPlay> {
                       size: 50,
                     ),
                   ),
-                  // Icon(
-                  //   Icons.skip_next,
-                  //   size: 50,
-                  // )
+                  InkWell(
+                    onTap: () {
+                      nextSong();
+                    },
+                    child: Icon(
+                      Icons.fast_forward,
+                      size: 40,
+                    ),
+                  ),
                 ],
               )
             ],
@@ -151,5 +182,38 @@ class _CurrentPlayState extends State<CurrentPlay> {
         position = dd;
       });
     });
+  }
+
+  nextSong()async {
+    if (mainIndex != podcastScreen.length - 1)  {
+       audioPlayer.stop();
+      setState(() {
+        mainIndex++;
+      });
+      await audioPlayer.play(widget.podcastScreen[mainIndex]['audioUrl'], isLocal: true);
+
+    } else {
+      audioPlayer.stop();
+      setState(() {
+        mainIndex = 0;
+      });
+       await audioPlayer.play(widget.podcastScreen[mainIndex]['audioUrl'], isLocal: true);
+    }
+  }
+
+  prevSong() async{
+    if (mainIndex != 0) {
+       audioPlayer.stop();
+      setState(() {
+        mainIndex--;
+      });
+       await audioPlayer.play(widget.podcastScreen[mainIndex]['audioUrl'], isLocal: true);
+    } else {
+      audioPlayer.stop();
+      setState(() {
+        mainIndex = podcastScreen.length - 1;
+      });
+        await audioPlayer.play(widget.podcastScreen[mainIndex]['audioUrl'], isLocal: true);
+    }
   }
 }

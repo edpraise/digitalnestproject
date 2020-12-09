@@ -126,7 +126,10 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                   borderRadius: BorderRadius.circular(10),
                   color: Color(0xFFbd1017),
                 ),
-                child: Center(child: Text('Tap to load more Podcasts')),
+                child: Center(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Tap to load more'),
+                )),
               ),
             ),
           );
@@ -137,6 +140,8 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
                 context,
                 MaterialPageRoute(
                     builder: (context) => CurrentPlay(
+                      podcastScreen:audioCastList ,
+                       index: index,
                         url: audioCastList[index]['audioUrl'],
                         title: audioCastList[index]['title'])));
           },
